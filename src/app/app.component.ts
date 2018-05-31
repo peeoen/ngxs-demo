@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { withLatestFrom } from 'rxjs/operators';
-import { AddFood, FoodsState } from './food/food.state';
+import { Login, Logout } from './auth/auth.state';
+
 
 @Component({
   selector: 'app-root',
@@ -10,20 +10,23 @@ import { AddFood, FoodsState } from './food/food.state';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @Select(FoodsState.foods) foods$: Observable<any>;
-  constructor(private store: Store) {
-    this.store.dispatch(new AddFood('Fire Rice'));
+ 
+  username: string;
+  password: string;
+  user$: Observable<any>;
 
-    setTimeout(() => {
-      this.store.dispatch(new AddFood('Omelette')).pipe(
-        withLatestFrom(this.foods$)
-      ).subscribe(([foods]) => {
-        // console.log(foods);
-      });
-    }, 3000);
+  constructor(private store: Store) {
+    this.user$ = this.store.select(state => state);
   }
 
-  getSnapshot() {
-    const snap = this.store.snapshot();
+  login() {
+    this.store.dispatch(new Login({
+      username: this.username,
+      password: this.password
+    }));
+  }
+
+  logout() {
+    this.store.dispatch(new Logout());
   }
 }

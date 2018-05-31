@@ -22,6 +22,7 @@
     "@angular/router": "^6.0.2",
     "@ngxs/devtools-plugin": "^3.0.1",
     "@ngxs/logger-plugin": "^3.0.1-dev.master-fea0205",
+    "@ngxs/storage-plugin": "^3.0.1",
     "@ngxs/store": "^3.0.1-dev.master-fea0205",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
