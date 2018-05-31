@@ -1,4 +1,4 @@
-import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
 
 export class AddFood {
     static readonly type = '[Food] Add Food';
@@ -15,7 +15,13 @@ export interface FoodStateModel {
         foods: 'default'
     }
 })
-export class FoodsState {
+export class FoodsState implements NgxsOnInit {
+
+    ngxsOnInit(ctx: StateContext<FoodStateModel>) {
+        console.log('State initialized, now getting animals');
+    }
+
+
     @Action(AddFood)
     addFoods(ctx: StateContext<FoodStateModel>, action: AddFood) {
         const state = ctx.getState();
@@ -28,6 +34,6 @@ export class FoodsState {
     // tslint:disable-next-line:member-ordering
     @Selector()
     static foods(state) {
-      return state.foods;
+        return state.foods;
     }
 }
