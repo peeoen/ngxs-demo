@@ -1,33 +1,14 @@
-import { Action, Selector, State, StateContext } from '@ngxs/store';
-
-export class AddFood {
-    static readonly type = '[Food] Add Food';
-    constructor(public name: string) { }
-}
-
-export interface FoodStateModel {
-    foods: string;
-}
-
-@State<FoodStateModel>({
-    name: 'food',
-    defaults: {
-        foods: 'default'
+import { State } from '@ngxs/store';
+​
+@State({
+  name: 'todos',
+  defaults: {
+    pizzaForm: {
+      model: undefined,
+      dirty: false,
+      status: '',
+      errors: {}
     }
+  }
 })
-export class FoodsState {
-    @Action(AddFood)
-    addFoods(ctx: StateContext<FoodStateModel>, action: AddFood) {
-        const state = ctx.getState();
-        ctx.setState({
-            ...state,
-            foods: action.name
-        });
-    }
-
-    // tslint:disable-next-line:member-ordering
-    @Selector()
-    static foods(state) {
-      return state.foods;
-    }
-}
+export class PizzaState {}

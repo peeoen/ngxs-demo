@@ -1,0 +1,8 @@
+<form [formGroup]="pizzaForm" novalidate ngxsForm="todos.pizzaForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="toppings" />
+    <button type="submit">Order</button>
+  </form>
+
+  <hr>
+
+  {{ pizza$ | async | json}}

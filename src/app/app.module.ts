@@ -1,11 +1,11 @@
-import { FoodsState } from './food/food.state';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app.component';
+import { PizzaState } from './food/food.state';
 
 @NgModule({
   declarations: [
@@ -14,9 +14,11 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxsModule.forRoot([
-      FoodsState
+      PizzaState
     ]),
+    NgxsFormPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [

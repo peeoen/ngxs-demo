@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,19 @@ import { Store } from '@ngxs/store';
 })
 export class AppComponent {
 
+  pizzaForm = this.formBuilder.group({
+    toppings: ['', Validators.required]
+  });
 
-  constructor(private store: Store) {
- 
+  pizza$: Observable<any>;
+​
+  constructor(private formBuilder: FormBuilder,
+  private store: Store) {
+    this.pizza$ = this.store.select(state => state);
+  }
+​
+  onSubmit() {
+    //
   }
 
 }
