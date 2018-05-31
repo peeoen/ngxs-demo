@@ -1,4 +1,4 @@
-import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
+import { Action, NgxsOnInit, Selector, State, StateContext, Store } from '@ngxs/store';
 
 export class AddFood {
     static readonly type = '[Food] Add Food';
@@ -47,11 +47,17 @@ export class AddUser {
 @State({
     name: 'restaurant'
 })
-export class RestaurantState extends FoodsState {
+export class RestaurantState  {
+
+    constructor(private store: Store) { }
+
     @Action(AddUser)
     addUser(ctx: StateContext<any>, action: AddUser) {
         const state = ctx.getState();
         console.log(state);
         console.log(action);
+
+        const foods = this.store.selectSnapshot(FoodsState);
+        console.log(foods);
     }
 }
