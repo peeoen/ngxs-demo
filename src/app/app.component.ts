@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AddFood, FoodsState } from './food/food.state';
 
 
 
@@ -10,9 +12,14 @@ import { Store } from '@ngxs/store';
 })
 export class AppComponent {
 
+  @Select(FoodsState) foods$: Observable<string>;
 
   constructor(private store: Store) {
- 
+    
+  }
+
+  addFood() {
+    this.store.dispatch(new AddFood('fire rice'));
   }
 
 }
