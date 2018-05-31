@@ -9,9 +9,11 @@ export interface FoodStateModel {
     foods: string;
 }
 
-@State<string>({
+@State<FoodStateModel>({
     name: 'food',
-    defaults: ''
+    defaults: {
+        foods: 'default'
+    }
 })
 export class FoodsState {
     @Action(AddFood)
@@ -26,7 +28,6 @@ export class FoodsState {
     // tslint:disable-next-line:member-ordering
     @Selector()
     static foods(state) {
-        console.log(state);
       return state.foods;
     }
 }
