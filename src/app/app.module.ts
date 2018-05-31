@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { AppComponent } from './app.component';
-import { FoodsState } from './food/food.state';
+import { FoodsState, RestaurantState } from './food/food.state';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,8 @@ import { FoodsState } from './food/food.state';
   imports: [
     BrowserModule,
     NgxsModule.forRoot([
-      FoodsState
+      FoodsState,
+      RestaurantState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot()
   ],
