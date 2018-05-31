@@ -1,4 +1,9 @@
 {{ foods$ | async }}
 
+<hr>
+{{ restautant$ | async | json }}
 
-<button (click)="getSnapshot()">Get Snapshot</button>
+<div>
+    <button (click)="getSnapshot()">Get Snapshot</button>
+    <button (click)="getRestuarant()">Get Restaurant</button>
+</div>

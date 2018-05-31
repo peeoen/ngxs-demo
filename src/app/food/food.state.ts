@@ -31,3 +31,21 @@ export class FoodsState {
       return state.foods;
     }
 }
+
+export class AddUser {
+    static readonly type = '[Restaurant] Add User';
+    constructor(public name: string) { }
+}
+
+
+@State({
+    name: 'restaurant'
+})
+export class RestaurantState extends FoodsState {
+    @Action(AddUser)
+    addUser(ctx: StateContext<any>, action: AddUser) {
+        const state = ctx.getState();
+        console.log(state);
+        console.log(action);
+    }
+}
