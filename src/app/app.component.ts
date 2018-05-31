@@ -18,13 +18,12 @@ export class AppComponent {
       this.store.dispatch(new AddFood('Omelette')).pipe(
         withLatestFrom(this.foods$)
       ).subscribe(([foods]) => {
-        console.log(foods);
+        // console.log(foods);
       });
     }, 3000);
   }
 
   getSnapshot() {
     const snap = this.store.snapshot();
-    console.log(snap);
   }
 }
