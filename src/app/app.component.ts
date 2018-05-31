@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { withLatestFrom } from 'rxjs/operators';
-import { AddFood, FoodsState } from './food/food.state';
+import { AddFood, FoodsState, GetFood } from './food/food.state';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +25,9 @@ export class AppComponent {
 
   getSnapshot() {
     const snap = this.store.snapshot();
+  }
+
+  delayFood() {
+    this.store.dispatch(new GetFood());
   }
 }

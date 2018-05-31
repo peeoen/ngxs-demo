@@ -1,8 +1,13 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-
+import { of } from 'rxjs';
+import { delay, tap } from 'rxjs/operators';
 export class AddFood {
     static readonly type = '[Food] Add Food';
     constructor(public name: string) { }
+}
+
+export class GetFood {
+    static readonly type = '[Food] Get Food';
 }
 
 export interface FoodStateModel {
@@ -24,6 +29,19 @@ export class FoodsState {
             foods: action.name
         });
     }
+
+    @Action(GetFood, { cancelUncompleted: true})
+    getFoods(ctx: StateContext<FoodStateModel>) {
+        return of(ctx.getState()).pipe(
+            tap(res => console.log(res)),
+            delay(2000),
+            tap((res) => {
+                console.log(res);
+                // ctx.setState(res);
+            })
+        );
+    }
+
 
     // tslint:disable-next-line:member-ordering
     @Selector()
