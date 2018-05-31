@@ -1,0 +1,5 @@
+{{ foods$ | async }}
+<hr>
+<p for="users" *ngFor="let user of (users$ | async)">
+  {{user}}
+</p>

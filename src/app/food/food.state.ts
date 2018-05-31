@@ -27,7 +27,7 @@ export class FoodsState {
 
     // tslint:disable-next-line:member-ordering
     @Selector()
-    static foods(state) {
+    static foods(state: FoodStateModel) {
       return state.foods;
     }
 }

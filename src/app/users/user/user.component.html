@@ -1,0 +1,11 @@
+<div>
+  <p for="users" *ngFor="let user of (users$ | async)">
+    {{user}}
+  </p>
+  
+  <input type="text" [(ngModel)]="userName">
+  <button (click)="addUser()">Add User</button>
+</div>
+
+
+{{foods$ | async}}
