@@ -1,4 +1,5 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { SideDishState } from './../side-dish/side-dish.state';
 
 export class AddFood {
     static readonly type = '[Food] Add Food';
@@ -7,13 +8,17 @@ export class AddFood {
 
 export interface FoodStateModel {
     foods: string;
+    sides?: string[];
 }
 
 @State<FoodStateModel>({
     name: 'food',
     defaults: {
-        foods: 'default'
-    }
+        foods: 'default',
+    },
+    children: [
+        SideDishState
+    ]
 })
 export class FoodsState {
     @Action(AddFood)
@@ -21,7 +26,10 @@ export class FoodsState {
         const state = ctx.getState();
         ctx.setState({
             ...state,
-            foods: action.name
+            foods: action.name,
+            sides: [
+                'new 1'
+            ]
         });
     }
 

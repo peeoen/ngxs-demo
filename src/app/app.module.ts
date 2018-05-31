@@ -1,3 +1,4 @@
+import { SideDishState } from './side-dish/side-dish.state';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -12,7 +13,8 @@ import { FoodsState } from './food/food.state';
   imports: [
     BrowserModule,
     NgxsModule.forRoot([
-      FoodsState
+      FoodsState,
+      SideDishState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot()
   ],
